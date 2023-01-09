@@ -43,7 +43,7 @@ const SideBar = () => {
           <Link to="/student" className="menu-item" >
             <span className='d-flex'>
               <AiOutlineUserAdd />
-              <p style={{ textDecoration: 'none' }}> Students </p>
+              <p style={{ textDecoration: 'none' }}> Files </p>
             </span>
           </Link>
         </li>
