@@ -25,7 +25,7 @@ const SideBar = () => {
           <Link to="/" className="menu-item" >
             <span className='d-flex'>
               <AiFillDashboard />
-              <p style={{ textDecoration: 'none' }}> Dashboard </p>
+              <p style={{ textDecoration: 'none' }}> test </p>
             </span>
           </Link>
         </li>
