@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from "react";
+
+
 
 import {
     InputGroup,
@@ -7,49 +9,69 @@ import {
     Card,
     Container,
     Row,
-    Col,
+    Col, Table, Button, Modal
 } from "react-bootstrap";
+
+import { AiFillDelete } from 'react-icons/ai';
+import { BsFillPencilFill } from 'react-icons/bs';
 
 
 const Department = () => {
 
     return (
-        <Card className="rounded-0 border-0 mt-3">
-            <Card.Body className="pb-3 pt-0 pt-5">
-                <h3 className="mb-3"> Add Courses </h3>
-                <Row className="bg-white rounded-0 border-0">
+        <div>
+            <Row>
+                <Col sm={4}>
+                    <Card className="mt-5">
+                        <Card.Body>
+                            <Form>
+                                <div className="row">
 
-                    <Col md={6}>
-                        <Form.Group className="">
-                            <Form.Label> Department </Form.Label>
-                            <Form.Control className="form-control" as="select">
-                                <option>Choose Department</option>
-                                <option value="1">BS Computer Sciences</option>
-                                <option value="2">BS Industrial & Manufacturing Engineering</option>
-                                <option value="3">BS Software Engineering</option>
-                                <option value="4"> BS Electrical Engineering</option>
-                                <option value="5">BS Physics</option>
-                                <option value="6">BS MAth</option>
-                            </Form.Control>
-                        </Form.Group>
-                    </Col>
+                                    <Col md={12}>
+                                        <Form.Label htmlFor="basic-url"> Name </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl type="text" />
+                                        </InputGroup>
+                                        <Form.Label htmlFor="basic-url"> Degree Name </Form.Label>
+                                        <InputGroup className="mb-3">
+                                            <FormControl type="text" />
+                                        </InputGroup>
+                                    </Col>
 
-                    <Col md={6}>
-                        <Form.Group className="">
-                            <Form.Label> Description </Form.Label>
-                            <InputGroup className="mb-3">
-                                <InputGroup className="mb-3">
-                                    <FormControl as="textarea" rows="4" id="basic-url" aria-describedby="basic-addon3"
-                                        placeholder="e.g. Hungs Continental Foods" />
-                                </InputGroup>
-                            </InputGroup>
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <hr />
-            </Card.Body>
-        </Card>
-    );
+                                    <Col md={12}>
+                                        <Form.Group controlId="Add">
+                                            <Button variant="primary" type="submit" size="lg" block>
+                                                Add
+                                            </Button>
+                                        </Form.Group>
+                                    </Col>
 
+                                </div>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                </Col>
+
+                <Col sm={8} className="mt-5">
+                    <div className="card">
+                        <div className="card-body">
+                            <Table striped bordered hover responsive>
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th> Department Name</th>
+                                        <th> Degree Name</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                            </Table>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+        </div>
+    )
 };
 export default Department;
