@@ -25,7 +25,16 @@ const SideBar = () => {
           <Link to="/" className="menu-item" >
             <span className='d-flex'>
               <AiFillDashboard />
-              <p style={{ textDecoration: 'none' }}> test </p>
+              <p style={{ textDecoration: 'none' }}> Dashboard </p>
+            </span>
+          </Link>
+        </li>
+
+        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
+          <Link to="/department" className="menu-item" >
+            <span className='d-flex'>
+              <AiOutlineUserAdd />
+              <p style={{ textDecoration: 'none' }}> Department </p>
             </span>
           </Link>
         </li>
@@ -40,40 +49,31 @@ const SideBar = () => {
         </li>
 
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/student" className="menu-item" >
-            <span className='d-flex'>
-              <AiOutlineUserAdd />
-              <p style={{ textDecoration: 'none' }}> Files </p>
-            </span>
-          </Link>
-        </li>
-
-        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/department" className="menu-item" >
-            <span className='d-flex'>
-              <FcDepartment />
-              <p style={{ textDecoration: 'none' }}> Department </p>
-            </span>
-          </Link>
-        </li>
-
-        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
           <Link to="/courses" className="menu-item" >
             <span className='d-flex'>
-              <FaDiscourse />
+              <FcDepartment />
               <p style={{ textDecoration: 'none' }}> Courses </p>
             </span>
           </Link>
         </li>
 
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
+          <Link to="/course file" className="menu-item" >
+            <span className='d-flex'>
+              <FaDiscourse />
+              <p style={{ textDecoration: 'none' }}> Course File </p>
+            </span>
+          </Link>
+        </li>
+
+       {/*<li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
           <Link to="/users" className="menu-item" >
             <span className='d-flex'>
               <AiOutlineUsergroupAdd />
               <p style={{ textDecoration: 'none' }}> Users </p>
             </span>
           </Link>
-        </li>
+  </li>*/}
 
       </ul>
 
