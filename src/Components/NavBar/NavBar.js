@@ -2,11 +2,32 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
+import { Link, useNavigate } from 'react-router-dom';
+
+import { Auth } from '../../context/Auth.Context';
+
 function NavBar() {
   const [click, setClick] = useState(false);
 
   const handleClick = () => setClick(!click);
+
+  const { isAuthenticated } = Auth()
+
+  const navigate = useNavigate()
+
+  const auth = Auth();
+
+  const logout = () => {
+    auth.activateAuthentication(false);
+    auth.activateToken("");
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshCycle");
+    localStorage.removeItem("user");
+    navigate("/signin");
+  };
+
   return (
+  
     <>
       <nav className="navbar">
         <div className="nav-container">
@@ -16,50 +37,9 @@ function NavBar() {
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/about"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                About
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/blog"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Blog
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink
-                exact
-                to="/contact"
-                activeClassName="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
-                Contact Us
-              </NavLink>
-            </li>
+              <buton style={{color:'white', }}>
+                Logout
+              </buton>
           </ul>
           <div className="nav-icon" onClick={handleClick}>
             <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
