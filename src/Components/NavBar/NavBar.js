@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Auth } from '../../context/Auth.Context';
+
+import { toast } from "react-toastify";
 
 function NavBar() {
   const [click, setClick] = useState(false);
@@ -23,7 +25,8 @@ function NavBar() {
     localStorage.removeItem("token");
     localStorage.removeItem("refreshCycle");
     localStorage.removeItem("user");
-    navigate("/signin");
+    toast("Logout")
+    navigate("/");
   };
 
   return (
@@ -37,7 +40,7 @@ function NavBar() {
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-              <buton style={{color:'white', }}>
+              <buton onClick={logout} style={{color:'white', }}>
                 Logout
               </buton>
           </ul>

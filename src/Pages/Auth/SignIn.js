@@ -3,12 +3,13 @@ import Axios from "axios";
 
 import { Card, Button, Form } from "react-bootstrap";
 
-
 import { Auth } from "../../context/Auth.Context";
 
 import { useNavigate } from 'react-router-dom';
 
 import { Link } from "react-router-dom";
+
+import { toast } from "react-toastify";
 
 const Signin = () => {
 
@@ -49,9 +50,10 @@ const Signin = () => {
         localStorage.setItem("user", JSON.stringify(result.data.user));
         auth.activateToken(localStorage.setItem("token", result.data.token));
         auth.activateAuthentication(true);
+        toast("You login Successfully")
         navigation("/dashboard");
       } 
-    }
+    } 
   };
 
   return (
@@ -59,12 +61,8 @@ const Signin = () => {
       <Card style={{ width: "350px", backgroundColor: "#F3F3F3" }} className="border-0">
         <Card.Body style={{ padding: "29px" }}>
           <Card.Title style={{ color: "#233D7B", fontWeight: "700", fontSize: "24px" }} >
-            Log in to Souk Center
+            <span style={{textAlign:'center'}}> Log in  </span>
           </Card.Title>
-
-          <div className="mt-4 mb-2" style={{ fontSize: "14px" }}>
-            Sign in using your registered account:
-          </div>
 
           <Form onSubmit={submit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">

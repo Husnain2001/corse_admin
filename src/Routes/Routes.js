@@ -5,21 +5,24 @@ import Department from "../Pages/AddDep/AddDep"
 import Home from "../Pages/Home/Home"
 
 import Course from "../Pages/AddCourse/AddCourse"
-import Registration from "../Pages/Registration/Registration"
+import AddRegistration from "../Pages/Registration/Add_Reg"
+
+import Signin from "../Pages/Auth/SignIn"
+import Signup from "../Pages/Auth/SignUp"
 
 const routes =[
-    {path:'/', element:<Dashboard />, exact:'true', type:'public' },
+    {path:'/dashboard', element:<Dashboard />, exact:'true', type:'private' },
 
-    {path:'/department', element:<Department />, exact:'true', type:'public' },
+    {path:'/department', element:<Department />, exact:'true', type:'private' },
 
-    {path:'/teachers', element:<Registration />, exact:'true', type:'public' },
+    {path:'/teacher_reg', element:<AddRegistration />, exact:'true', type:'private' },
 
-    {path:'/Courses', element:<Course />, exact:'true', type:'public' },
+    {path:'/courses', element:<Course />, exact:'true', type:'private' },
 
-    {path:'/Course file', element:<Home />, exact:'true', type:'public' }
+    {path:'/course_file', element:<Home />, exact:'true', type:'private' },
 
-
-
+    {path:'/', element:<Signin />, exact:'true', type:'public' },
+    {path:'/signup', element:<Signup />, exact:'true', type:'public' }
 
 ]
 

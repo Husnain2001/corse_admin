@@ -13,7 +13,7 @@ const AuthorizedLayout = ({ children }) => {
                 <div className="container main-body">
                     {children}
                 </div>
-            </div>
+            </div> 
 
         </React.Fragment>
     );

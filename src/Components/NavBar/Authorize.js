@@ -13,6 +13,6 @@ const AuthorizHeader = () => {
                 <Navbar.Toggle />
             </Container>
         </Navbar>
-    );
+    ); 
 };
 export default AuthorizHeader;

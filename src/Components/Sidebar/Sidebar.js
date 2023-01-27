@@ -5,9 +5,10 @@ import { Form } from 'react-bootstrap';
 
 import './index.css'
 
-import { AiFillDashboard, AiOutlineUserAdd, AiOutlineUsergroupAdd } from 'react-icons/ai';
-import { FaDiscourse } from 'react-icons/fa';
+import { AiFillDashboard, AiFillFilePdf, AiFillBook  } from 'react-icons/ai';
+import { FaSchool } from 'react-icons/fa';
 import { FcDepartment } from 'react-icons/fc';
+import { GiTeacher } from 'react-icons/gi';
 
 const SideBar = () => {
 
@@ -22,27 +23,27 @@ const SideBar = () => {
 
       <ul className="list-unstyled user-menubar">
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/" className="menu-item" >
+          <Link to="/dashboard" className="menu-item" >
             <span className='d-flex'>
-              <AiFillDashboard />
+              <AiFillDashboard style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Dashboard </p>
             </span>
           </Link>
         </li>
-
+ 
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
           <Link to="/department" className="menu-item" >
             <span className='d-flex'>
-              <AiOutlineUserAdd />
+              <FaSchool style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Department </p>
             </span>
           </Link>
         </li>
 
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/teachers" className="menu-item" >
+          <Link to="/teacher_reg" className="menu-item" >
             <span className='d-flex'>
-              <AiOutlineUserAdd />
+              <GiTeacher style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Teachers </p>
             </span>
           </Link>
@@ -51,16 +52,16 @@ const SideBar = () => {
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
           <Link to="/courses" className="menu-item" >
             <span className='d-flex'>
-              <FcDepartment />
+              <AiFillBook style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Courses </p>
             </span>
           </Link>
         </li>
 
         <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/course file" className="menu-item" >
+          <Link to="/course_file" className="menu-item" >
             <span className='d-flex'>
-              <FaDiscourse />
+              <AiFillFilePdf style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Course File </p>
             </span>
           </Link>
