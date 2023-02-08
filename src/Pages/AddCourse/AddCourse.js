@@ -1,10 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 
 
-
 import {
-    InputGroup,
-    FormControl,
     Form,
     Card,
     Container,
@@ -15,49 +12,82 @@ import {
 import { AiFillDelete } from 'react-icons/ai';
 import { BsFillPencilFill } from 'react-icons/bs';
 
+import { POST, GETID, DELETE, PUT, GET } from "../../apicontroller/ApiController"
+
 
 const Course = () => {
+
+    const [departments, setDepartment] = useState([]);
+
+    const fetchData = async () => {
+        GET("department").then((result) => {
+            setDepartment(result);
+        });
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, [])
 
     return (
         <div>
             <Row>
+
                 <Col sm={4}>
-                    <Card className="mt-5">
+                    <Card className="mt-3">
                         <Card.Body>
                             <Form>
                                 <div className="row">
 
                                     <Col md={12}>
-                                        <Form.Label htmlFor="basic-url"> Course Id </Form.Label>
-                                        <InputGroup className="mb-3">
-                                            <FormControl type="text" />
-                                        </InputGroup>
-                                        <Form.Label htmlFor="basic-url"> Course Name </Form.Label>
-                                        <InputGroup className="mb-3">
-                                            <FormControl type="text" />
-                                        </InputGroup>
-                                        <Form.Label htmlFor="basic-url"> Assigned Teacher </Form.Label>
-                                        <InputGroup className="mb-3">
-                                            <FormControl type="text" />
-                                        </InputGroup>
-                                        <Form.Label htmlFor="basic-url"> Department </Form.Label>
-                                        <InputGroup className="mb-3">
-                                            <FormControl type="text" />
-                                        </InputGroup>
-                                        <Form.Label htmlFor="basic-url"> Shift </Form.Label>
-                                        <InputGroup className="mb-3">
-                                            <FormControl type="text" />
-                                        </InputGroup>
-                                    </Col>
-
-                                    <Col md={12}>
-                                        <Form.Group controlId="Add">
-                                            <Button variant="primary" type="submit" size="lg" block>
-                                                Add
-                                            </Button>
+                                        <Form.Group className="">
+                                            <Form.Label>   Course Id </Form.Label>
+                                            <Form.Control type="text" placeholder="Product" />
                                         </Form.Group>
                                     </Col>
 
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3">
+                                            <Form.Label>  Course Name </Form.Label>
+                                            <Form.Control type="text" placeholder="Product" />
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col md={12}>
+
+                                        <Form.Group className="mt-3">
+                                            <Form.Label> Department </Form.Label>
+                                            <Form.Control className="form-control" as="select">
+                                                <option value=""> --- Select --- </option>
+                                                {departments.map((department) => (
+                                                    <option value={department.id}>{department.department}</option>
+                                                ))}
+                                            </Form.Control>
+                                        </Form.Group>
+
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3">
+                                            <Form.Label> Assigned Teacher </Form.Label>
+                                            <Form.Control type="text" placeholder="Product" />
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Group className="mt-3">
+                                            <Form.Label> Shift </Form.Label>
+                                            <Form.Control type="text" placeholder="Product" />
+                                        </Form.Group>
+                                    </Col>
+
+                                    <Col md={12}>
+                                        <Form.Group controlId="submit">
+                                            <Button variant="primary" type="submit" size="lg" block>
+                                                Submit
+                                            </Button>
+                                        </Form.Group>
+                                    </Col>
                                 </div>
                             </Form>
                         </Card.Body>
@@ -79,7 +109,7 @@ const Course = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
                                 </tbody>
                             </Table>
                         </div>

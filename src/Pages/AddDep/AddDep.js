@@ -99,6 +99,7 @@ const Department = () => {
                                         <InputGroup className="mb-3">
                                             <FormControl type="text" ref={departmentRef} />
                                         </InputGroup>
+                                        
                                         <Form.Label htmlFor="basic-url"> Degree Name </Form.Label>
                                         <InputGroup className="mb-3">
                                             <FormControl type="text" ref={degreeRef} />
