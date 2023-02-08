@@ -9,7 +9,7 @@ const AuthProvider = (props) => {
     ? localStorage.getItem("refreshCycle")
     : false;
   const [isAuthenticated, setIsAuthenticated] = useState(value);
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState(); 
 
   /* Verify if token is present or not */
   useEffect(() => {
