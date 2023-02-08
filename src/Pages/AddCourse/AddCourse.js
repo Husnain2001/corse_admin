@@ -16,7 +16,7 @@ import { POST, GETID, DELETE, PUT, GET } from "../../apicontroller/ApiController
 
 
 const Course = () => {
-
+ 
     const [departments, setDepartment] = useState([]);
 
     const fetchData = async () => {
