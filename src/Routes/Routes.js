@@ -2,7 +2,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard"
 
 import Department from "../Pages/AddDep/AddDep"
 
-import Home from "../Pages/Home/Home"
+import Coursefile from "../Pages/CourseFile/Coursefile"
 
 import Course from "../Pages/AddCourse/AddCourse"
 import AddRegistration from "../Pages/Registration/Add_Reg"
@@ -19,7 +19,7 @@ const routes =[
 
     {path:'/courses', element:<Course />, exact:'true', type:'private' },
 
-    {path:'/course_file', element:<Home />, exact:'true', type:'private' },
+    {path:'/course_file', element:<Coursefile />, exact:'true', type:'private' },
 
     {path:'/', element:<Signin />, exact:'true', type:'public' },
     {path:'/signup', element:<Signup />, exact:'true', type:'public' }

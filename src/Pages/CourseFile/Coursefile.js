@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Home.css";
+import "./Coursefile.css";
 
 import {
     InputGroup,
@@ -9,10 +9,10 @@ import {
     Col,
 } from "react-bootstrap";
 
-const Home = () => {
+const Coursefile = () => {
 
     return (
-        <div className='home'>
+        <div className='Coursefile'>
             <Card className="rounded-0 border-0 mt-3">
                 <Card.Body className="pb-3 pt-0 pt-5">
                     <h3 className="mb-3"> Add Courses </h3>
@@ -71,7 +71,7 @@ const Home = () => {
                                     <option value="3">BS Software Engineering</option>
                                     <option value="4"> BS Electrical Engineering</option>
                                     <option value="5">BS Physics</option>
-                                    <option value="6">BS MAth</option>
+                                    <option value="6">BS Mathematics</option>
                                 </Form.Control>
                             </Form.Group>
                         </Col>
@@ -86,7 +86,7 @@ const Home = () => {
                                     <option value="3">BS Software Engineering</option>
                                     <option value="4"> BS Electrical Engineering</option>
                                     <option value="5">BS Physics</option>
-                                    <option value="6">BS MAth</option>
+                                    <option value="6">BS Mathematics</option>
                                 </Form.Control>
                             </Form.Group>
                         </Col>
@@ -116,4 +116,4 @@ const Home = () => {
     );
 
 };
-export default Home;
+export default Coursefile;
