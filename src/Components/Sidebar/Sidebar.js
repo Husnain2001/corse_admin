@@ -40,8 +40,8 @@ const SideBar = () => {
           </Link>
         </li>
 
-        <li className={`${active == 1 ? "active-list" : ""}`} onClick={() => setActive(1)}>
-          <Link to="/teacher_reg" className="menu-item" >
+        <li className={`${active == 2 ? "active-list" : ""}`} onClick={() => setActive(2)}>
+          <Link to="/teacher" className="menu-item" >
             <span className='d-flex'>
               <GiTeacher style={{color:'white'}} />
               <p style={{ textDecoration: 'none' }}> Teachers </p>

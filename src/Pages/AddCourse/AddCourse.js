@@ -83,7 +83,7 @@ const Course = () => {
 
                                     <Col md={12}>
                                         <Form.Group controlId="submit">
-                                            <Button variant="primary" type="submit" size="lg" block>
+                                            <Button className="mt-3" variant="primary" type="submit" size="lg" block>
                                                 Submit
                                             </Button>
                                         </Form.Group>

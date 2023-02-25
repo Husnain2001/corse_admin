@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import "./Coursefile.css";
 
 import {
     InputGroup,
@@ -128,11 +127,17 @@ const Coursefile = () => {
                 <Finalexam />
             ) : ("")}
             {page === 1 ? (
-                <button onClick={() => setPage(1)}> Prev Page </button>
+                <button className='mt-4' style={{backgroundColor:'#1F5156', color:'white', borderRadius:'25px', padding:'0.5rem'}} onClick={() => setPage(1)}> Prev Page </button>
             ) : ("")}
 
-            <button onClick={() => setPage(2)}> {page === 1 ? ("Next Page") : ("Prev Page")}</button>
-            {page === 1 ? ("") : (<button onClick={() => setPage(3)}> {page === 2 ? ("Next Page") : ("Next Page")} </button>)}
+            <button className='ms-3' style={{backgroundColor:'#1F5156', color:'white', borderRadius:'25px', padding:'0.5rem'}} onClick={() => setPage(2)}> {page === 1 ? ("Next Page") : ("Prev Page")}</button>
+
+            { page === 1 ? ("") : 
+                (   <button className='ms-3 mt-3' style={{backgroundColor:'#1F5156', color:'white', borderRadius:'25px', padding:'0.5rem'}} onClick={() => setPage(3)}> 
+                        {page === 2 ? ("Next Page") : ("Submit")} 
+                    </button>
+                )
+            }
 
         </div>
     );
