@@ -14,9 +14,89 @@ import { BsFillPencilFill } from 'react-icons/bs';
 
 import { POST, GETID, DELETE, PUT, GET } from "../../apicontroller/ApiController"
 
+import { toast } from "react-toastify";
 
 const Course = () => {
- 
+
+    const coursenameRef = useRef();
+    const courseidRef = useRef();
+    const departmentRef = useRef();
+    const teacherRef = useRef();
+    const shiftRef = useRef();
+
+    const submit = async (event) => {
+        event.preventDefault();
+        const formData = {
+            department: departmentRef.current.value,
+            coursename: coursenameRef.current.value,
+            courseid: courseidRef.current.value,
+            shift: shiftRef.current.value,
+            teacher: teacherRef.current.value,
+        };
+        POST("course", formData).then((res) => {
+            toast("Course Added Successfully")
+        });
+    };
+
+    // Edit Funation
+
+    const [courseid, setCourseId] = useState([]);
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    //Edit FUNCTION
+    const edit = async (event, id) => {
+        setCourseId(id);
+        GETID("course", id, "");
+        handleShow();
+    };
+
+    // Edit Ref
+    const ecoursenameRef = useRef();
+    const ecourseidRef = useRef();
+    const edepartmentRef = useRef();
+    const eteacherRef = useRef();
+    const eshiftRef = useRef();
+
+
+    // Send edited data to the databse finction
+    const eSubmit = (event, id) => {
+        event.preventDefault();
+        const formData = {
+            department: edepartmentRef.current.value,
+            coursename: ecoursenameRef.current.value,
+            courseid: ecourseidRef.current.value,
+            shift: eshiftRef.current.value,
+            teacher: eteacherRef.current.value,
+        };
+
+        PUT("course", id, formData).then((res) => {
+            toast("Course Updated Successfully");
+            fetchData();
+        });
+    };
+
+
+    const [courses, setCourses] = useState(false);
+
+    const fetchData = async () => {
+        GET("course/").then((result) => {
+            setCourses(result);
+        });
+    };
+
+    useEffect(() => {
+        fetchata();
+    }, [])
+
+    const remove = async (event, id) => {
+        await DELETE("course/delete", id, "");
+        fetchdata();
+    };
+
+
     const [departments, setDepartment] = useState([]);
 
     const fetchData = async () => {
@@ -42,14 +122,14 @@ const Course = () => {
                                     <Col md={12}>
                                         <Form.Group className="">
                                             <Form.Label>   Course Id </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" />
+                                            <Form.Control type="text" placeholder="Product" ref={courseidRef} />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label>  Course Name </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" />
+                                            <Form.Control type="text" placeholder="Product" ref={coursenameRef} />
                                         </Form.Group>
                                     </Col>
 
@@ -70,20 +150,20 @@ const Course = () => {
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label> Assigned Teacher </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" />
+                                            <Form.Control type="text" placeholder="Product" ref={teacherRef} />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label> Shift </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" />
+                                            <Form.Control type="text" placeholder="Product" ref={shiftRef} />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group controlId="submit">
-                                            <Button className="mt-3" variant="primary" type="submit" size="lg" block>
+                                            <Button onClick={submit} variant="primary" type="submit" size="lg" block>
                                                 Submit
                                             </Button>
                                         </Form.Group>
@@ -106,9 +186,25 @@ const Course = () => {
                                         <th>Assigned Teaher</th>
                                         <th> Department </th>
                                         <th>Shift </th>
+                                        <th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    {courses && courses.map((course) => (
+
+                                        <tr>
+                                            <td> {course.id} </td>
+                                            <td> {course.courseid} </td>
+                                            <td> {course.coursename} </td>
+                                            <td> {course.department} </td>
+                                            <td> {course.teacher} </td>
+                                            <td> {course.shift} </td>
+                                            <td>
+                                                <AiFillDelete style={{ color: 'red' }} onClick={(e) => remove(e, course.id)} />
+                                                <BsFillPencilFill style={{ color: 'blue', marginLeft: '1rem' }} onClick={(e) => edit(e, course.id)} />
+                                            </td>
+                                        </tr>
+                                    ))}
 
                                 </tbody>
                             </Table>
