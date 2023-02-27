@@ -81,33 +81,33 @@ const Course = () => {
 
     const [courses, setCourses] = useState(false);
 
-    const fetchData = async () => {
-        GET("course/").then((result) => {
-            setCourses(result);
-        });
-    };
-
-    useEffect(() => {
-        fetchata();
-    }, [])
-
-    const remove = async (event, id) => {
-        await DELETE("course/delete", id, "");
-        fetchdata();
-    };
-
-
     const [departments, setDepartment] = useState([]);
 
+    const [teachers, setTeachers] = useState([]);
+
+
     const fetchData = async () => {
+        GET("course").then((result) => {
+            setCourses(result);
+        });
+
         GET("department").then((result) => {
             setDepartment(result);
+        });
+
+        GET("teacher").then((result) => {
+            setTeachers(result);
         });
     };
 
     useEffect(() => {
         fetchData();
     }, [])
+
+    const remove = async (event, id) => {
+        await DELETE("course/delete", id, "");
+        fetchData();
+    };
 
     return (
         <div>
@@ -122,14 +122,14 @@ const Course = () => {
                                     <Col md={12}>
                                         <Form.Group className="">
                                             <Form.Label>   Course Id </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" ref={courseidRef} />
+                                            <Form.Control ref={courseidRef} type="text" placeholder="Product"  />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label>  Course Name </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" ref={coursenameRef} />
+                                            <Form.Control ref={coursenameRef} type="text" placeholder="Product"  />
                                         </Form.Group>
                                     </Col>
 
@@ -137,7 +137,7 @@ const Course = () => {
 
                                         <Form.Group className="mt-3">
                                             <Form.Label> Department </Form.Label>
-                                            <Form.Control className="form-control" as="select">
+                                            <Form.Control ref={departmentRef} className="form-control" as="select">
                                                 <option value=""> --- Select --- </option>
                                                 {departments.map((department) => (
                                                     <option value={department.id}>{department.department}</option>
@@ -150,19 +150,24 @@ const Course = () => {
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label> Assigned Teacher </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" ref={teacherRef} />
+                                            <Form.Control ref={teacherRef} className="form-control" as="select">
+                                                <option value=""> --- Select --- </option>
+                                                {teachers.map((teacher) => (
+                                                    <option value={teacher.id}>{teacher.name}</option>
+                                                ))}
+                                            </Form.Control>
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label> Shift </Form.Label>
-                                            <Form.Control type="text" placeholder="Product" ref={shiftRef} />
+                                            <Form.Control ref={shiftRef} type="text" placeholder="Product"  />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Group controlId="submit">
+                                        <Form.Group className="mt-3">
                                             <Button onClick={submit} variant="primary" type="submit" size="lg" block>
                                                 Submit
                                             </Button>

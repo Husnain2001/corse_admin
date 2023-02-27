@@ -10,18 +10,18 @@ import { POST, GETID, DELETE, PUT, GET } from "../../apicontroller/ApiController
 
 const Teacher = () => {
 
-    const teachernameRef = useRef();
-    const teacheremailRef = useRef();
-    const teacherdeptRef = useRef();
-    const teacherpassRef = useRef();
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const departmentRef = useRef();
+    const passwordRef = useRef();
 
     const submit = async (event) => {
         event.preventDefault();
         const formData = {
-            Name: teachernameRef.current.value,
-            Email: teacheremailRef.current.value,
-            Password: teacherpassRef.current.value,
-            Department: teacherdeptRef.current.value,
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            password: passwordRef.current.value,
+            department: departmentRef.current.value,
             
         };
         POST("teacher", formData).then((res) => {
@@ -42,28 +42,6 @@ const Teacher = () => {
         setTeacherId(id);
         GETID("teacher", id, "");
         handleShow();
-    };
-
-    // Edit Ref
-    const eteachernameRef = useRef();
-    const eteacheremailRef = useRef();
-    const eteacherdeptRef = useRef();
-    const eteacherpassRef = useRef();
-
-    // Send edited data to the databse finction
-    const eSubmit = (event, id) => {
-        event.preventDefault();
-        const formData = {
-            Name: eteachernameRef.current.value,
-            Email: eteacheremailRef.current.value,
-            Password: eteacherpassRef.current.value,
-            Department: eteacherdeptRef.current.value,
-        };
-
-        PUT("teacher", id, formData).then((res) => {
-            toast("Teacher Updated Successfully");
-            fetchdata();
-        });
     };
 
 
@@ -106,24 +84,24 @@ const Teacher = () => {
                                     <Col>
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label> Name </Form.Label>
-                                            <Form.Control type="text" placeholder="Enter Name" ref={teachernameRef}  />
+                                            <Form.Control ref={nameRef} type="text" placeholder="Enter Name"   />
                                         </Form.Group>
                                     
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label> Email </Form.Label>
-                                            <Form.Control type="email" placeholder="Enter Email" ref={teacheremailRef} />
+                                            <Form.Control ref={emailRef} type="email" placeholder="Enter Email"  />
                                         </Form.Group>
                                     
                                         <Form.Group className="mb-3" controlId="formBasicEmail">
                                             <Form.Label> Password </Form.Label>
-                                            <Form.Control type="password" placeholder="Enter Password" ref={teacherpassRef}  />
+                                            <Form.Control ref={passwordRef} type="password" placeholder="Enter Password"   />
                                         </Form.Group>
                                     </Col>
 
                                     <Col md={12}>
                                         <Form.Group className="mt-3">
                                             <Form.Label> Department </Form.Label>
-                                            <Form.Control className="form-control" as="select"  >
+                                            <Form.Control ref={departmentRef} className="form-control" as="select"  >
                                                 <option value=""> --- Select --- </option>
                                                 {departments.map((department) => (
                                                     <option value={department.id}>{department.department}</option>
@@ -134,7 +112,7 @@ const Teacher = () => {
                                     </Col>
 
                                     <Col md={12}>
-                                        <Form.Group controlId="Add">
+                                        <Form.Group className='mt-3'>
                                             <Button onClick={submit} variant="primary" type="submit" size="lg" block>
                                                 Submit
                                             </Button>
@@ -163,11 +141,11 @@ const Teacher = () => {
                                     {teachers && teachers.map((teacher) => (
 
                                         <tr>
-                                            <td> {teacher.ID} </td>
-                                            <td> {teacher.Name} </td>
-                                            <td> {teacher.Email} </td>
-                                            <td> {teacher.Password} </td>
-                                            <td> {teacher.Department} </td>
+                                            <td> {teacher.iD} </td>
+                                            <td> {teacher.name} </td>
+                                            <td> {teacher.email} </td>
+                                            <td> {teacher.password} </td>
+                                            <td> {teacher.department} </td>
                                             <td>
                                                 <AiFillDelete style={{ color: 'red' }} onClick={(e) => remove(e, teacher.ID)} />
                                                 <BsFillPencilFill style={{ color: 'blue', marginLeft: '1rem' }} onClick={(e) => edit(e, teacher.ID)} />
@@ -181,39 +159,7 @@ const Teacher = () => {
                         </div>
                     </Col>
             </Row>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title> Edit Details </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Row className="">
-                        <Col md={6}>
-                            <Form.Label htmlFor="basic-url"> Name </Form.Label>
-                            <FormControl ref={eteachernameRef} className="form-control" />
-                        </Col>
 
-                        <Col md={6}>
-                            <Form.Label htmlFor="basic-url"> Email </Form.Label>
-                            <FormControl ref={eteacheremailRef} className="form-control" />
-                        </Col>
-
-                        <Col md={6}>
-                            <Form.Label htmlFor="basic-url"> Password </Form.Label>
-                            <FormControl ref={eteacherpassRef} className="form-control" />
-                        </Col>
-
-                        <Col md={6}>
-                            <Form.Label htmlFor="basic-url"> Department </Form.Label>
-                            <FormControl ref={eteacherdeptRef} className="form-control" />
-                        </Col>
-                    </Row>
-                </Modal.Body>
-                <div className="my-2 pl-3 mb-5">
-                    <Button className="btn-custom border-0 mx-3" variant="danger" onClick={(e) => eSubmit(e, teacherid)} >
-                        Submit
-                    </Button>
-                </div>
-            </Modal>
         </div>
     );
 
