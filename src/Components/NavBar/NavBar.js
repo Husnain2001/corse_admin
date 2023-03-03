@@ -40,7 +40,7 @@ function NavBar() {
           </NavLink>
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
-              <buton onClick={logout} style={{color:'white', }}>
+              <buton onClick={logout} style={{color:'#a1e1fa', }}>
                 Logout
               </buton>
           </ul>

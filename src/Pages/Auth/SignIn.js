@@ -57,7 +57,7 @@ const Signin = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center" style={{ padding: "50px 0px" }} >
+    <div className="d-flex justify-content-center" style={{ padding: "50px 100px" }} >
       <Card style={{ width: "350px", backgroundColor: "#F3F3F3" }} className="border-0">
         <Card.Body style={{ padding: "29px" }}>
           <Card.Title style={{ color: "#233D7B", fontWeight: "700", fontSize: "24px" }} >

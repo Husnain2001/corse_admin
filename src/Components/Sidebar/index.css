@@ -8,11 +8,11 @@
 }
 
 .sidebar .menu-item p{
-  color: white;
+  color: #a1e1fa;
 }
 
 .sidebar .sub-menu-item p{
-  color: white;
+  color:#a1e1fa ;
 }
 
 .user-menubar .menu-item {
@@ -49,6 +49,10 @@
   margin-left: 25px;
 }
 
+::selection {
+  color: red;
+  background: yellow;
+}
 .user-menubar .menu-item.active {
   background-color: #303341;
   color: #fff !important;
